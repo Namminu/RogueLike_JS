@@ -1,37 +1,14 @@
 import chalk from 'chalk';
 import readlineSync from 'readline-sync';
-
-class Player {
-  constructor() {
-    this.hp = 100;
-  }
-
-  attack() {
-    // 플레이어의 공격
-  }
-}
-
-class Monster {
-  constructor() {
-    this.hp = 100;
-  }
-
-  attack() {
-    // 몬스터의 공격
-  }
-}
+import {Player} from './Player.js';
+import {Monster} from './Monster.js';
+import { BossMonster } from './BossMonster.js';
 
 function displayStatus(stage, player, monster) {
   console.log(chalk.magentaBright(`\n=== Current Status ===`));
-  console.log(
-    chalk.cyanBright(`| Stage: ${stage} `) +
-    chalk.blueBright(
-      `| 플레이어 정보`,
-    ) +
-    chalk.redBright(
-      `| 몬스터 정보 |`,
-    ),
-  );
+  console.log(chalk.cyanBright(`| Stage: ${stage} `));
+    console.log(chalk.blueBright(`| 플레이어 정보 | LEVEL : ${player.LEVEL} HP : ${player.HP} DEF : ${player.DEF}}`,));
+    console.log(chalk.redBright(`| 몬스터 정보 |`,));
   console.log(chalk.magentaBright(`=====================\n`));
 }
 
@@ -46,10 +23,10 @@ const battle = async (stage, player, monster) => {
 
     console.log(
       chalk.green(
-        `\n1. 공격한다 2. 아무것도 하지않는다.`,
+        `\n1. 공격 2. 회피`,
       ),
     );
-    const choice = readlineSync.question('당신의 선택은? ');
+    const choice = readlineSync.question('Enter : ');
 
     // 플레이어의 선택에 따라 다음 행동 처리
     logs.push(chalk.green(`${choice}를 선택하셨습니다.`));
