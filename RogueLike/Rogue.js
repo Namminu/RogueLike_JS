@@ -4,6 +4,8 @@ import { battle } from './Battle.js';
 import readlineSync from 'readline-sync';
 
 export function displayStatus(stage, player, monster) {
+  console.log(monster.TYPE === 'Normal' ? chalk.green(`[ 일반 스테이지 ${stage}]`) 
+                                        : chalk.red(`[ 보스 스테이지 ${stage}]`));
   console.log(chalk.magentaBright(`=== Current Status ===`));
   console.log(chalk.cyanBright(`| Stage: ${stage} `));
   console.log(chalk.blueBright(`| 플레이어 정보 | LEVEL : ${player.LEVEL} HP : ${player.CurHP} DEF : ${player.DEF}`,));

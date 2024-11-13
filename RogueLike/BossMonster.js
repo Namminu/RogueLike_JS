@@ -14,5 +14,5 @@ export class BossMonster extends Monster
         this._HP -= (hit_damage * ((100 - this._DEF)/100));
     }
 // ----------------------------------------------------------------------
-    
+    get DEF() { return this._DEF; }
 }
