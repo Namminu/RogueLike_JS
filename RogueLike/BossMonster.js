@@ -1,11 +1,11 @@
-import { Monster } from "./Monster"
+import { Monster } from "./Monster.js"
 import chalk from 'chalk';
 
 export class BossMonster extends Monster
 {
-    constructor(name, hp, atk, exp, def)
+    constructor(name, hp, atk, exp, type, def)
     {
-        super(name, hp, atk, exp);
+        super(name, hp, atk, exp, type);
         this._DEF = def;
     }
 // ----------------------------------------------------------------------
