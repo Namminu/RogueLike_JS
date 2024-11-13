@@ -12,76 +12,76 @@
         "stage" : 2,
         "type" : "Boss",
         "name" : "오염된 당산나무",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null,
-        "def" : null
+        "hp" : 150,
+        "atk" : 20,
+        "exp" : 50,
+        "def" : 15
     },
 
     {
         "stage" : 3,
         "type" : "Normal",
         "name" : "어미잃은 코브라",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null
+        "hp" : 60,
+        "atk" : 15,
+        "exp" : 30
     },
 
     {
         "stage" : 4,
         "type" : "Boss",
         "name" : "흉폭한 식인 악어",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null,
-        "def" : null
+        "hp" : 250,
+        "atk" : 25,
+        "exp" : 60,
+        "def" : 20
     },
 
     {
         "stage" : 5,
         "type" : "Normal",
         "name" : "풍화된 석회암",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null
+        "hp" : 80,
+        "atk" : 20,
+        "exp" : 30
     },
 
     {
         "stage" : 6,
         "type" : "Boss",
         "name" : "분출하는 용암석",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null,
-        "def" : null
+        "hp" : 350,
+        "atk" : 35,
+        "exp" : 80,
+        "def" : 25
     },
 
     {
         "stage" : 7,
         "type" : "Normal",
         "name" : "현혹된 피라미",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null
+        "hp" : 60,
+        "atk" : 30,
+        "exp" : 70
     },
 
     {
         "stage" : 8,
         "type" : "Boss",
         "name" : "노래부는 세이렌",
-        "hp" : null,
-        "atk" : null,
-        "exp" : null,
-        "def" : null
+        "hp" : 450,
+        "atk" : 40,
+        "exp" : 100,
+        "def" : 30
     },
 
     {
         "stage" : 9,
         "type" : "Boss",
         "name" : "어린 마녀",
-        "hp" : null,
-        "atk" : null,
+        "hp" : 666,
+        "atk" : 50,
         "exp" : null,
-        "def" : null
+        "def" : 40
     }
 ]
