@@ -14,13 +14,13 @@ export class Player {
     }
 // ----------------------------------------------------------------------
     //공격 기능
-    Attack() 
+    Attack(isParring) 
     {
         if((this._DoubleATKRate/100) > Math.random())
         {
             //연속 공격 진행
             return { 
-                damage : this._ATK * 2,
+                damage : isParring ? (this._ATK*2) *2 : this._ATK * 2,
                 message : chalk.blue(`연속 공격 발동!`)
             };
         }
@@ -28,8 +28,8 @@ export class Player {
         {
             //일반 공격 진행
             return { 
-                damage : this._ATK,
-                message : chalk.blue(`${this._ATK} 의 공격을 합니다.`)
+                damage : isParring ? (this._ATK*2) : this._ATK,
+                message : chalk.blue(`${isParring ? (this._ATK*2) : this._ATK} 의 공격을 합니다.`)
             };
         }
     }
@@ -40,7 +40,8 @@ export class Player {
         {
             //일정 확률로 회피 성공 + 체력 일정량 회복
             if((this._CurHP * 1.2) > this._MaxHP) this._CurHP = this._MaxHP;
-            else this._CurHP = Math.floor((this._CurHP * 1.2)* 10 )/10;
+            //else this._CurHP = Math.floor((this._CurHP * 1.2)* 10 )/10;
+            else this._CurHP *= 1.2;
 
             return chalk.blue('회피 성공! 체력을 소량 회복합니다.');
         }
@@ -88,8 +89,8 @@ export class Player {
         if(this._EXP >= 100)
         {
             this.LevelUp();
-            console.log(chalk.blue("Player LEVEL UP! : " + this._LEVEL));
-            console.log(chalk.blue("플레이어 능력이 일정량 증가합니다."));
+            console.log(chalk.yellow("\nPlayer LEVEL UP! : " + this._LEVEL));
+            console.log(chalk.yellow("플레이어 능력이 일정량 증가합니다."));
         }
     }
 }

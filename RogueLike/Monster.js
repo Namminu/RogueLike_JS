@@ -22,10 +22,6 @@ export class Monster {
         this._HP -= hit_damage;
         return chalk.blue(`몬스터가 ${hit_damage} 의 피해를 입었습니다.`);
     }
-    Mon_Die()
-    {
-
-    }
 
 // ----------------------------------------------------------------------
     get NAME() { return this._NAME; }

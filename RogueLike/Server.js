@@ -3,7 +3,7 @@ import figlet from 'figlet';
 import readlineSync from 'readline-sync';
 import {startGame} from "./Rogue.js";
 // 로비 화면을 출력하는 함수
-function displayLobby() {
+export function displayLobby() {
     console.clear();
 
     // 타이틀 텍스트

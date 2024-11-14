@@ -4,18 +4,18 @@
         "type" : "Normal",
         "name" : "부러진 나무 줄기",
         "hp" : 50,
-        "atk" : 10,
-        "exp" : 20
+        "atk" : 15,
+        "exp" : 40
     },
 
     {
         "stage" : 2,
         "type" : "Boss",
         "name" : "오염된 당산나무",
-        "hp" : 150,
-        "atk" : 20,
-        "exp" : 50,
-        "def" : 15
+        "hp" : 200,
+        "atk" : 25,
+        "exp" : 100,
+        "def" : 25
     },
 
     {
@@ -23,45 +23,45 @@
         "type" : "Normal",
         "name" : "어미잃은 코브라",
         "hp" : 60,
-        "atk" : 15,
-        "exp" : 30
+        "atk" : 40,
+        "exp" : 50
     },
 
     {
         "stage" : 4,
         "type" : "Boss",
         "name" : "흉폭한 식인 악어",
-        "hp" : 250,
-        "atk" : 25,
-        "exp" : 60,
-        "def" : 20
+        "hp" : 300,
+        "atk" : 50,
+        "exp" : 120,
+        "def" : 30
     },
 
     {
         "stage" : 5,
         "type" : "Normal",
         "name" : "풍화된 석회암",
-        "hp" : 80,
-        "atk" : 20,
-        "exp" : 30
+        "hp" : 120,
+        "atk" : 25,
+        "exp" : 60
     },
 
     {
         "stage" : 6,
         "type" : "Boss",
         "name" : "분출하는 용암석",
-        "hp" : 350,
+        "hp" : 500,
         "atk" : 35,
-        "exp" : 80,
-        "def" : 25
+        "exp" : 150,
+        "def" : 50
     },
 
     {
         "stage" : 7,
         "type" : "Normal",
         "name" : "현혹된 피라미",
-        "hp" : 60,
-        "atk" : 30,
+        "hp" : 80,
+        "atk" : 50,
         "exp" : 70
     },
 
@@ -69,19 +69,19 @@
         "stage" : 8,
         "type" : "Boss",
         "name" : "노래부는 세이렌",
-        "hp" : 450,
-        "atk" : 40,
-        "exp" : 100,
-        "def" : 30
+        "hp" : 400,
+        "atk" : 50,
+        "exp" : 180,
+        "def" : 40
     },
 
     {
         "stage" : 9,
         "type" : "Boss",
         "name" : "어린 마녀",
-        "hp" : 666,
-        "atk" : 50,
+        "hp" : 6666,
+        "atk" : 66,
         "exp" : null,
-        "def" : 40
+        "def" : 66
     }
 ]
