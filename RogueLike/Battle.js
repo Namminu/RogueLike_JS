@@ -5,10 +5,9 @@ import readlineSync from "readline-sync";
 
 
 async function displayLogs(logs) {
-    console.log({ logs })
     for (const log of logs) {
         console.log(log);
-        // await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 500));
     }
 }
 
@@ -41,7 +40,6 @@ export const battle = async (stage, player) => {
     console.clear();
     displayStatus(stage, player, monster);
     await displayLogs(logs);
-    readlineSync.question("POS: ");
     //logs.forEach((log) => console.log(log));
 
     console.log(

@@ -25,20 +25,14 @@ export async function startGame()
     let exp;
     try {
       exp = await battle(stage, player);
-      readlineSync.question('STEP 2.2: ');
     } catch(err) {
-      readlineSync.question('STEP 2.1: ');
       console.error(err);
     }
-    readlineSync.question('STEP 2: ');
     console.clear();
-    console.log(`이번 스테이지 경험치 : ${exp}`);
 
     console.log(chalk.magentaBright(`${stage} 스테이지를 클리어 했습니다.`));
     console.log(chalk.blueBright(`${exp}의 경험치를 획득합니다`));
-    console.log(`플레이어 이전 경험치 : ${player.EXP}`);
     player.EXP += exp;
-    console.log(`플레이어 현재 경험치 : ${player.EXP}`);
 
     console.log(chalk.magentaBright(`\n1. Continue 2. Stay 3. Exit`));
 
@@ -59,7 +53,6 @@ export async function startGame()
         break;
     }
   }
-  readlineSync.question('OUT OF WHILE LOOp: ');
 
   console.log(chalk.magentaBright(`모든 스테이지를 클리어 했습니다.`));
   readlineSync.question('\nPress Enter...');
