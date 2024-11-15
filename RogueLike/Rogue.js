@@ -19,7 +19,7 @@ export async function startGame()
 {
   console.clear();
   const player = new Player(100, 20, 15, 20);
-  let stage = 10;
+  let stage = 1;
 
   while (stage <= 9) 
   {
@@ -50,6 +50,6 @@ export async function startGame()
     }
   }
   console.log(chalk.magentaBright(`모든 스테이지를 클리어 했습니다.`));
-  readlineSync.question('\nPress Any Key...');
-  EndGame();
+  readlineSync.question('\nPress Enter...');
+  await EndGame();
 }

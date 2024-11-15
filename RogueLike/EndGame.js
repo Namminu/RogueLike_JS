@@ -1,50 +1,49 @@
-import chalk from 'chalk';
-import { displayLobby } from './Server.js';
-import fs from 'fs';
+import chalk from "chalk";
+import { start } from "./Server.js";
+import fs from "fs";
+import readlineSync from 'readline-sync';
 
-export function EndGame()
+export async function EndGame() 
 {
-    const data = fs.readFileSync('EndGameMessage.json', 'utf-8');
-    const messages = JSON.parse(data);    
+  const data = fs.readFileSync("EndGameMessage.json", "utf-8");
+  const messages = JSON.parse(data);
 
-    let m_Id = 1;
-    while(m_Id <= messages.length)
-    {
-        console.clear();
-        const messageObj = messages.find(message => messages.id === m_Id);
-        console.log(chalk.white(messageObj));
+  let m_Id = 1;
+  while (m_Id <= messages.length) {
+    console.clear();
+    const messageObj = messages.find((message) => message.id === m_Id);
+    console.log(chalk.white(messageObj.message));
 
-        if(m_Id === 6) choiceExitOrMore(messages, m_Id);
-        readlineSync.question(chalk.gray('\n Enter Any Key ...'));
-        m_Id++;
-    }
+    if (m_Id === 6) choiceExitOrMore(messages, m_Id);
+    readlineSync.question(chalk.gray("\n Press Enter ..."));
+    m_Id++;
+  }
 }
 
-function choiceExitOrMore(messages, id)
+function choiceExitOrMore(messages, id) 
 {
-    console.log(chalk.magentaBright(`\n1. 좋아. 2. 그만 할래`));
-    const choice = readlineSync.question(chalk.gray('Enter : '));   
-    id+=choice;
-    let messageObj;
+  console.log(chalk.magentaBright(`\n1. 좋아. 2. 그만 할래`));
+  const choice = readlineSync.question(chalk.gray("Enter : "));
+  let messageObj;
 
-    switch (choice)
-    {
-        case '1':
-            console.clear();
-            messageObj = messages.find(message => messages.id === id);
-            console.log(chalk.white(messageObj));
-            process.exit(0);
+  switch (choice) {
+    case "1":
+      console.clear();
+      messageObj = messages.find((message) => message.id === id + 2);
+      console.log(chalk.white(messageObj.message));
+      readlineSync.question(chalk.gray("\nStart!"));
+      start();
+      break;
 
-        case '2':
-            console.clear();
-            messageObj = messages.find(message => messages.id === id);
-            console.log(chalk.white(messageObj));
-            readlineSync.question(chalk.gray('Start : '));
-            displayLobby();
-            break;
+    case "2":
+      console.clear();
+      messageObj = messages.find((message) => message.id === id + 1);
+      console.log(chalk.white(messageObj.message));
+      process.exit(0);
 
-        default:
-            console.log(chalk.white("뭐라고? 제대로 못들었어."));
-            choiceExitOrMore();
-    }
+    default:
+      console.clear();
+      console.log(chalk.white("뭐라고? 제대로 못들었어."));
+      choiceExitOrMore();
+  }
 }
