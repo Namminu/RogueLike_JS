@@ -3,14 +3,12 @@ import { displayStatus } from "./Rogue.js";
 import { spawnMonster } from "./SpawnMonster.js";
 import readlineSync from "readline-sync";
 
-
 async function displayLogs(logs) {
     for (const log of logs) {
         console.log(log);
         await new Promise((resolve) => setTimeout(resolve, 500));
     }
 }
-
 
 const ParringSide = chalk.white(
   `[1. 좌 상단] [2. 중 상단] [3. 우 상단]\n
@@ -41,7 +39,6 @@ export const battle = async (stage, player) => {
     displayStatus(stage, player, monster);
     await displayLogs(logs);
     //logs.forEach((log) => console.log(log));
-
     console.log(
       chalk.green(
         `\n1. 공격   2. 회피(35%) ${

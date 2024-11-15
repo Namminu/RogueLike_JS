@@ -2,7 +2,12 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import readlineSync from 'readline-sync';
 import {startGame} from "./Rogue.js";
-import { getInput } from './test.js';
+//import { getInput } from './test.js';
+import readline from 'readline';
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
 // 로비 화면을 출력하는 함수
 export function displayLobby() {
@@ -41,38 +46,39 @@ export function displayLobby() {
 
     // 하단 설명
     console.log(chalk.gray('1-4 사이의 수를 입력한 뒤 엔터를 누르세요.'));
+    handleUserInput();
 }
 
 // 유저 입력을 받아 처리하는 함수
 async function handleUserInput() {
-    //const choice = readlineSync.question('Enter: ');
-    const choice = getInput();
-    console.log({ choice })
-    switch (choice) {
-        case '1':
-            console.log(chalk.green('게임을 시작합니다.'));
-            // 여기에서 새로운 게임 시작 로직을 구현
-            await startGame();
-            break;
-        case '2':
-            console.log(chalk.yellow('구현 준비중입니다.. 게임을 시작하세요'));
-            // 업적 확인하기 로직을 구현
-            handleUserInput();
-            break;
-        case '3':
-            console.log(chalk.blue('구현 준비중입니다.. 게임을 시작하세요'));
-            // 옵션 메뉴 로직을 구현
-            handleUserInput();
-            break;
-        case '4':
-            console.log(chalk.red('게임을 종료합니다.'));
-            // 게임 종료 로직을 구현
-            process.exit(0); // 게임 종료
-            break;
-        default:
-            console.log(chalk.red('올바른 선택을 하세요.'));
-            handleUserInput(); // 유효하지 않은 입력일 경우 다시 입력 받음
-    }
+
+    rl.question('Enter : ', async (choice) => {
+        switch (choice) {
+            case '1':
+                console.log(chalk.green('게임을 시작합니다.'));
+                // 여기에서 새로운 게임 시작 로직을 구현
+                await startGame();
+                break;
+            case '2':
+                console.log(chalk.yellow('구현 준비중입니다.. 게임을 시작하세요'));
+                // 업적 확인하기 로직을 구현
+                handleUserInput();
+                break;
+            case '3':
+                console.log(chalk.blue('구현 준비중입니다.. 게임을 시작하세요'));
+                // 옵션 메뉴 로직을 구현
+                handleUserInput();
+                break;
+            case '4':
+                console.log(chalk.red('게임을 종료합니다.'));
+                // 게임 종료 로직을 구현
+                process.exit(0); // 게임 종료
+            default:
+                console.log(chalk.red('올바른 선택을 하세요.'));
+                handleUserInput(); // 유효하지 않은 입력일 경우 다시 입력 받음
+        }
+        rl.close();
+      });
 }
 
 // 게임 시작 함수
