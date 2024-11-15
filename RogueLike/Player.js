@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 export class Player {
-    constructor(maxHp, atk, def, dAtkRate) {
+    constructor(maxHp, atk, def, dAtkRate, exp) {
       this._MaxHP = maxHp;
       this._CurHP = this._MaxHP;
 
@@ -10,7 +10,7 @@ export class Player {
       this._DoubleATKRate = dAtkRate;
 
       this._LEVEL = 1;
-      this._EXP = 0;
+      this._EXP = exp;
     }
 // ----------------------------------------------------------------------
     //공격 기능
@@ -67,7 +67,7 @@ export class Player {
         this._ATK += Math.floor(Math.random() * 10);
         this._DoubleATKRate += Math.floor(Math.random() * 10);
         this._DEF += Math.floor(Math.random() * 10);
-        this._EXP = 0;
+        this._EXP -= 100;
     }
 // ----------------------------------------------------------------------
     get MaxHP() { return this._MaxHP; }
@@ -85,7 +85,11 @@ export class Player {
     set DoubleATKRate(value) { this._DoubleATKRate = value; }
     set EXP(value) 
     { 
-        this._EXP += value; 
+        console.log(`플레이어 내부 this : ${this}`);    //Object
+        console.log(`플레이어 내부 - value 값 : ${value}`); //40 제대로 나옴
+        this._EXP = value;
+        console.log(`플레이어 내부 - 수식 계산 : ${this._EXP = value}`);   //80?
+        console.log(`플레이어 내부 - 현재 경험치 : ${this._EXP}`);
         if(this._EXP >= 100)
         {
             this.LevelUp();
