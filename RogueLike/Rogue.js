@@ -2,13 +2,7 @@ import chalk from 'chalk';
 import { Player } from './Player.js';
 import { battle } from './Battle.js';
 import { EndGame } from './EndGame.js';
-//import readlineSync from 'readline-sync';
-import readline from 'readline';
-const Rog_rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
+import readlineSync from 'readline-sync';
 
 export function displayStatus(stage, player, monster) {
   console.log(monster.TYPE === 'Normal' ? chalk.green(`[ 일반 스테이지 ${stage}]`) 
@@ -42,48 +36,25 @@ export async function startGame()
 
     console.log(chalk.magentaBright(`\n1. Continue 2. Stay 3. Exit`));
 
-    // const choice = readlineSync.question('Enter : ');
-    // switch(choice)
-    // {
-    //   case '1':
-    //     stage++;
-    //     break;
-    //   case '2':
-    //     break;
-    //   case '3':
-    //     console.log(chalk.red('게임을 종료합니다.'));
-    //     process.exit(0);
-    //   default:
-    //     console.log(chalk.red('잘못된 입력입니다. 게임을 진행합니다.'));
-    //     stage++;
-    //     break;
-    // }
-
-    Rog_rl.question('Enter :', async(choice) => {
-      switch(choice)
-      {
-        case '1':
-          stage++;
-          break;
-        case '2':
-          break;
-        case '3':
-          console.log(chalk.red('게임을 종료합니다.'));
-          process.exit(0);
-        default:
-          console.log(chalk.red('잘못된 입력입니다. 게임을 진행합니다.'));
-          stage++;
-          break;
-      }
-      Rog_rl.close();
-    });
+    const choice = readlineSync.question('Enter : ');
+    switch(choice)
+    {
+      case '1':
+        stage++;
+        break;
+      case '2':
+        break;
+      case '3':
+        console.log(chalk.red('게임을 종료합니다.'));
+        process.exit(0);
+      default:
+        console.log(chalk.red('잘못된 입력입니다. 게임을 진행합니다.'));
+        stage++;
+        break;
+    }
   }
 
   console.log(chalk.magentaBright(`모든 스테이지를 클리어 했습니다.`));
-  //readlineSync.question('\nPress Enter...');
-  Rog_rl.question('\nPress Enter...', (enter) => {
-    Rog_rl.close();
-  });
-  
+  readlineSync.question('\nPress Enter...');
   await EndGame();
 }

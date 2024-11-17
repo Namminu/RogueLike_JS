@@ -1,12 +1,7 @@
 import chalk from 'chalk';
 import figlet from 'figlet';
-//import readlineSync from 'readline-sync';
+import readlineSync from 'readline-sync';
 import {startGame} from "./Rogue.js";
-import readline from 'readline';
-const Sv_rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
 
 // 로비 화면을 출력하는 함수
 export function displayLobby() {
@@ -39,38 +34,36 @@ export function displayLobby() {
     console.log(line);
 
     console.log(chalk.gray('1-4 사이의 수를 입력한 뒤 엔터를 누르세요.'));
-    handleUserInput();
+    //handleUserInput();
 }
 
 async function handleUserInput() {
-    Sv_rl.question('Enter : ', async (choice) => {
-        switch (choice) {
-            case '1':
-                console.log(chalk.green('게임을 시작합니다.'));
-                await startGame();
-                break;
-            case '2':
-                console.log(chalk.yellow('구현 준비중입니다.. 게임을 시작하세요'));
-                handleUserInput();
-                break;
-            case '3':
-                console.log(chalk.blue('구현 준비중입니다.. 게임을 시작하세요'));
-                handleUserInput();
-                break;
-            case '4':
-                console.log(chalk.red('게임을 종료합니다.'));
-                process.exit(0); 
-            default:
-                console.log(chalk.red('올바른 선택을 하세요.'));
-                handleUserInput(); 
-        }
-        Sv_rl.close();
-      });
+    const choice = readlineSync.question('Enter : ');
+    switch (choice) {
+        case '1':
+            console.log(chalk.green('게임을 시작합니다.'));
+            await startGame();
+            break;
+        case '2':
+            console.log(chalk.yellow('구현 준비중입니다.. 게임을 시작하세요'));
+            handleUserInput();
+            break;
+        case '3':
+            console.log(chalk.blue('구현 준비중입니다.. 게임을 시작하세요'));
+            handleUserInput();
+            break;
+        case '4':
+            console.log(chalk.red('게임을 종료합니다.'));
+            process.exit(0); 
+        default:
+            console.log(chalk.red('올바른 선택을 하세요.'));
+            handleUserInput(); 
+    }
 }
 
 export async function start() {
     displayLobby();
-    //await handleUserInput();
+    await handleUserInput();
 }
 
 start();

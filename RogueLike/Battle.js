@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import { displayStatus } from "./Rogue.js";
 import { spawnMonster } from "./SpawnMonster.js";
-//import readlineSync from "readline-sync";
-import readline from 'readline';
-const Bat_rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+import readlineSync from "readline-sync";
+// import readline from 'readline';
+// const Bat_rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
 
 async function displayLogs(logs) {
     for (const log of logs) {
@@ -59,59 +59,53 @@ export const battle = async (stage, player) => {
 
 function battleInput(logs, player, monster, stage) {
   let pDamage, mDamage;
-  //const choice = readlineSync.question("Enter : ");
-  Bat_rl.question('Enter : ', async (choice) => {
-    switch (choice) {
-      case "1":
-        //플레이어 공격 처리
-        pDamage = player.Attack(false);
-        logs.push(chalk.green(`공격 : ${pDamage.message}`));
-        logs.push(monster.Mon_Hitted(pDamage.damage));
-  
-        //이후 몬스터 공격 진행
-        mDamage = monster.Mon_Attack();
-        logs.push(mDamage.message);
-        player.Hitted(mDamage.damage);
-        break;
-  
-      case "2":
-        mDamage = monster.Mon_Attack();
-        logs.push(chalk.green(`회피 : ${player.Dodge(mDamage.damage)}`));
-        break;
-  
-      case "3":
-        if (monster.TYPE !== "Boss") {
-          console.log(chalk.red("잘못된 입력입니다."));
-          battleInput(logs, player, monster);
-        } else {
-          console.clear();
-          displayStatus(stage, player, monster);
-          console.log(ParringSide);
-          //const pChoice = readlineSync.question("Enter : ");
-          Bat_rl.question('Enter : ', (pChoice) => {
-            const pResult = ParringChoice(pChoice);
-            logs.push(pResult.message);
-            if (pResult.isParring) {
-              pDamage = player.Attack(pResult.isParring);
-              logs.push(chalk.green(`반격 : ${pDamage.message}`));
-              logs.push(monster.Mon_Hitted(pDamage.damage));
-            } else {
-              mDamage = monster.Mon_Attack();
-              logs.push(mDamage.message);
-              player.Hitted(mDamage.damage * 1.1);
-            }
-            Bat_rl.close();
-          });
-        }
-        break;
-  
-      default:
+  const choice = readlineSync.question("Enter : ");
+  switch (choice) {
+    case "1":
+      //플레이어 공격 처리
+      pDamage = player.Attack(false);
+      logs.push(chalk.green(`공격 : ${pDamage.message}`));
+      logs.push(monster.Mon_Hitted(pDamage.damage));
+
+      //이후 몬스터 공격 진행
+      mDamage = monster.Mon_Attack();
+      logs.push(mDamage.message);
+      player.Hitted(mDamage.damage);
+      break;
+
+    case "2":
+      mDamage = monster.Mon_Attack();
+      logs.push(chalk.green(`회피 : ${player.Dodge(mDamage.damage)}`));
+      break;
+
+    case "3":
+      if (monster.TYPE !== "Boss") {
         console.log(chalk.red("잘못된 입력입니다."));
-        battleInput(logs, player, monster, stage);
-    }
-    Bat_rl.close();
-  });
- 
+        battleInput(logs, player, monster);
+      } else {
+        console.clear();
+        displayStatus(stage, player, monster);
+        console.log(ParringSide);
+        const pChoice = readlineSync.question("Enter : ");
+
+        const pResult = ParringChoice(pChoice);
+        logs.push(pResult.message);
+        if (pResult.isParring) {
+          pDamage = player.Attack(pResult.isParring);
+          logs.push(chalk.green(`반격 : ${pDamage.message}`));
+          logs.push(monster.Mon_Hitted(pDamage.damage));
+        } else {
+          mDamage = monster.Mon_Attack();
+          logs.push(mDamage.message);
+          player.Hitted(mDamage.damage * 1.1);
+        }
+      }
+      break;
+
+    default:
+      console.log(chalk.red("잘못된 입력입니다."));
+      battleInput(logs, player, monster, stage);
+  }
 }
 
 function ParringChoice(pChoice) {
