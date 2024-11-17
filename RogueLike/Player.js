@@ -85,11 +85,7 @@ export class Player {
     set DoubleATKRate(value) { this._DoubleATKRate = value; }
     set EXP(value) 
     { 
-        console.log(`플레이어 내부 this : ${this}`);    //Object
-        console.log(`플레이어 내부 - value 값 : ${value}`); //40 제대로 나옴
         this._EXP = value;
-        console.log(`플레이어 내부 - 수식 계산 : ${this._EXP = value}`);   //80?
-        console.log(`플레이어 내부 - 현재 경험치 : ${this._EXP}`);
         if(this._EXP >= 100)
         {
             this.LevelUp();

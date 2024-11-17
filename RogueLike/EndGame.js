@@ -24,6 +24,7 @@ function choiceExitOrMore(messages, id)
 {
   console.log(chalk.magentaBright(`\n1. 좋아. 2. 그만 할래`));
   const choice = readlineSync.question(chalk.gray("Enter : "));
+  let messageObj;
   switch (choice) {
     case "1":
       console.clear();
@@ -42,5 +43,4 @@ function choiceExitOrMore(messages, id)
       console.log(chalk.white("뭐라고? 제대로 못들었어."));
       choiceExitOrMore();
   }
-  let messageObj;
 }
